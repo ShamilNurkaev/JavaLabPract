@@ -13,13 +13,13 @@ public class Main {
         Connection connection = dataSource.openConnection(URL, USER, PASSWORD);
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from student");
+            ResultSet resultSet = statement.executeQuery("select * from student order by ID");
             while (resultSet.next()) {
                 System.out.println("ID: " + resultSet.getString("id"));
                 System.out.println("First Name: " + resultSet.getString("first_name"));
                 System.out.println("Last Name: " + resultSet.getString("last_name"));
                 System.out.println("Age: " + resultSet.getInt("age"));
-                System.out.println("Group: " + resultSet.getInt("group_number"));
+                System.out.println("Group: " + resultSet.getInt("group_number") + "\n");
             }
             resultSet.close();
             statement.close();
