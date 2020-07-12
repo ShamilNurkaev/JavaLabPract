@@ -1,3 +1,9 @@
+/**
+ * @nshamil Shamil Nurkaev
+ * 11-905
+ * Homework 3 (Repository)
+ */
+
 package ru.itis.nurkaev.summerPractice.repositories;
 
 import java.util.List;

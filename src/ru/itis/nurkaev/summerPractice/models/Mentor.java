@@ -1,3 +1,9 @@
+/**
+ * @nshamil Shamil Nurkaev
+ * 11-905
+ * Homework 3 (Repository)
+ */
+
 package ru.itis.nurkaev.summerPractice.models;
 
 import java.util.Objects;
@@ -76,12 +82,11 @@ public class Mentor {
 
     @Override
     public String toString() {
-        return "Mentor{" +
-                "id=" + id +
-                ", firstName='" + firstName.trim() + '\'' +
-                ", lastName='" + lastName.trim() + '\'' +
-                ", subject='" + subject.trim() + '\'' +
-                ", studentId=" + student.getId() +
-                '}';
+        return String.format("Mentor{id=%d, firstName='%s', lastName='%s', subject='%s', studentId=%d}",
+                id,
+                firstName.trim(),
+                lastName.trim(),
+                subject.trim(),
+                student.getId());
     }
 }

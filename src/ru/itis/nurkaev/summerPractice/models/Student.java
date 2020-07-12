@@ -1,3 +1,9 @@
+/**
+ * @nshamil Shamil Nurkaev
+ * 11-905
+ * Homework 3 (Repository)
+ */
+
 package ru.itis.nurkaev.summerPractice.models;
 
 import java.util.List;
@@ -88,13 +94,12 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", firstName='" + firstName.trim() + '\'' +
-                ", lastName='" + lastName.trim() + '\'' +
-                ", age=" + age +
-                ", groupNumber=" + groupNumber +
-                ", mentors=" + mentors +
-                '}';
+        return String.format("Student{id=%d, firstName='%s', lastName='%s', age=%d, groupNumber=%d, mentors=%s}",
+                id,
+                firstName.trim(),
+                lastName.trim(),
+                age,
+                groupNumber,
+                mentors);
     }
 }

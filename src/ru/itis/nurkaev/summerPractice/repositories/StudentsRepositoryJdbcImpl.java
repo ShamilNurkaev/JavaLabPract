@@ -1,3 +1,9 @@
+/**
+ * @nshamil Shamil Nurkaev
+ * 11-905
+ * Homework 3 (Repository)
+ */
+
 package ru.itis.nurkaev.summerPractice.repositories;
 
 import ru.itis.nurkaev.summerPractice.models.Mentor;
@@ -49,7 +55,63 @@ public class StudentsRepositoryJdbcImpl implements StudentsRepository {
 
     @Override
     public List<Student> findAll() {
-        return null;
+        List<Student> students = new ArrayList<>();
+        try (Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(SQL_SELECT_ALL_STUDENTS)) {
+            if (resultSet.next()) {
+                addNewStudent(students, resultSet);
+            }
+
+            long tempID = students.get(students.size() - 1).getId();
+            while (resultSet.next()) {
+                if (tempID == resultSet.getLong("s_id")) {
+                    Student studentWithTempID = students.get(students.size() - 1);
+                    Mentor mentor = new Mentor(
+                            resultSet.getLong("m_id"),
+                            resultSet.getString("m_first_name"),
+                            resultSet.getString("m_last_name"),
+                            resultSet.getString("subject_id"),
+                            studentWithTempID);
+                    studentWithTempID.getMentors().add(mentor);
+
+                    // putting the subject field title in mentor instead subject_id
+                    putTitleInsteadSubjectID(mentor);
+                } else {
+                    addNewStudent(students, resultSet);
+                    tempID = students.get(students.size() - 1).getId();
+                }
+            }
+            return students;
+        } catch (SQLException e) {
+            throw new IllegalArgumentException(e);
+        }
+    }
+
+    private void addNewStudent(List<Student> students, ResultSet resultSet) throws SQLException {
+        List<Mentor> mentors = new ArrayList<>();
+
+        Student student = new Student(
+                resultSet.getLong("s_id"),
+                resultSet.getString("s_first_name"),
+                resultSet.getString("s_last_name"),
+                resultSet.getInt("age"),
+                resultSet.getInt("group_number"),
+                mentors);
+        students.add(student);
+
+        if (resultSet.getLong("m_id") != 0) {
+            Mentor mentor = new Mentor(
+                    resultSet.getLong("m_id"),
+                    resultSet.getString("m_first_name"),
+                    resultSet.getString("m_last_name"),
+                    resultSet.getString("subject_id"),
+                    student
+            );
+
+            // putting the subject field title in mentor instead subject_id
+            putTitleInsteadSubjectID(mentor);
+            mentors.add(mentor);
+        }
     }
 
     @Override
@@ -171,17 +233,22 @@ public class StudentsRepositoryJdbcImpl implements StudentsRepository {
                 mentors.add(mentor);
 
                 // putting the subject field title in mentor instead subject_id
-                try (Statement statement1 = connection.createStatement();
-                     ResultSet resultSet1 = statement1.executeQuery(SQL_SELECT_MSUBJECT_BY_SUBJECTID +
-                             Long.parseLong(mentor.getSubject()))) {
-                    if (resultSet1.next()) {
-                        mentor.setSubject(resultSet1.getString("title"));
-                    }
-                }
+                putTitleInsteadSubjectID(mentor);
                 mentors.add(mentor);
             }
         } catch (SQLException e) {
             throw new IllegalArgumentException(e);
+        }
+    }
+
+    private void putTitleInsteadSubjectID(Mentor mentor) throws SQLException {
+        // putting the subject field title in mentor instead subject_id
+        try (Statement statement1 = connection.createStatement();
+             ResultSet resultSet1 = statement1.executeQuery(SQL_SELECT_MSUBJECT_BY_SUBJECTID +
+                     Long.parseLong(mentor.getSubject()))) {
+            if (resultSet1.next()) {
+                mentor.setSubject(resultSet1.getString("title"));
+            }
         }
     }
 }
