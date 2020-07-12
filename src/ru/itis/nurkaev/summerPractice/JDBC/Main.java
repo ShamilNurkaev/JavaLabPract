@@ -1,4 +1,4 @@
-package ru.kpfu.itis.group905.nurkaev.summerPractice;
+package ru.itis.nurkaev.summerPractice.JDBC;
 
 import java.sql.*;
 
