@@ -54,6 +54,7 @@ public class Main {
         /*test update*/
         student.setFirstName("Дмитрий");
         student.setLastName("Железнов");
+        student.setGroupNumber(905);
         List<Mentor> mentors1 = new ArrayList<>();
         mentors1.add(new Mentor(null, "Алексей", "Савватеев", "Math analysis", student));
         student.setMentors(mentors1);
