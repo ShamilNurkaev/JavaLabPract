@@ -1,120 +1,41 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Resume</title>
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Icons Fonts -->
-    <link href="icons-fonts/style.css" rel="stylesheet">
-    <!-- Main styles -->
-    <link href="css/styles.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,200,200italic,300,300italic,400italic,600,600italic,700'
-          rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800,700italic'
-          rel='stylesheet' type='text/css'>
-
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
+            integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
+            crossorigin="anonymous"></script>
+    <title>Document</title>
 </head>
-<body>
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12 col-sm-6 col-sm-offset-3 resumeWrapper">
-            <div class="section-title">
-                <h2>Resume</h2>
-            </div>
-            <div class="resume-box">
-                <div>
-                    <i class="icon_id"></i>
-                </div>
-                <div>
-                    <h3>Nurkaev Shamil Fidanovich</h3>
-                    <p>19 y.o.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-            </div>
-            <div class="resume-box">
-                <div>
-                    <i class="icon_toolbox_alt"></i>
-                </div>
-                <div>
-                    <h3>Higher Institute of Information Technology and Intelligent Systems</h3>
-                    <span>2-nd year</span>
-                    <p>Bachelor Degree Program 'SOFTWARE ENGINEERING', 2019 - 2023</p>
-                </div>
-            </div>
-            <div class="resume-box">
-                <div>
-                    <i class="icon_drawer_alt"></i>
-                </div>
-                <div>
-                    <h3>Work experience</h3>
-                    <span>year - year</span>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-            </div>
-            <div>
-                <div>
-                    <ul>
-                        <li>
-                            <h3><span class="icon_phone" aria-hidden="true"></span> Phone</h3>
-                            <p>+7 (999) 111-00-00</p>
-                        </li>
-                        <li>
-                            <h3><span class="icon_mail" aria-hidden="true"></span> E-mail</h3>
-                            <p>nurkaievs@mail.ru</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+<script>
+    function getUsers() {
+        $.getJSON("/profile", function (response) {
+            let html = "<table>";
+            for (let i = 0; i < response.length; i++) {
+                html += "<tr>";
+                html += "<td>" +
+                    "name: " + response[i]["name"] + "<br>" +
+                    "age: " + response[i]["age"] + "<br>" +
+                    "education: " + response[i]["education"] + "<br>" +
+                    "academic degree: " + response[i]["academic degree"] + "<br>" +
+                    "course: " + response[i]["course"] + "<br>" +
+                    "work experience: " + response[i]["work experience"] + "<br>" +
+                    "phone: " + response[i]["phone"] + "<br>" +
+                    "email: " + response[i]["email"] + "<br>" +
+                    "message: " + response[i]["message"] + "<br>" +
+                    "</td>";
+                html += "</tr>";
+            }
+            html += "</table>";
+            $("#users_table").append(html);
+        });
+    }
+</script>
+<body onload="getUsers()">
+<div style="background: #f5f5f5; "id="users_table">
 </div>
-
-<section id="contact">
-    <div class="contact-background">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-60 col-sm-offset-3 contactWrapper">
-                    <div class="section-title">
-                        <h2>Contact</h2>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6 contact-form">
-                            <div>
-                                <form method="post" id="contactfor">
-                                    <div class="input-style">
-                                        <div>
-                                            <input class="form-control" type="text" id="name" name="name"
-                                                   placeholder="Name">
-                                        </div>
-                                        <div>
-                                            <input class="form-control" type="email" id="email" name="email"
-                                                   placeholder="E-Mail">
-                                        </div>
-                                    </div>
-                                    <div class="text-style">
-                                        <textarea class="form-control" name="message" id="message"
-                                                  placeholder="Message"></textarea>
-                                    </div>
-                                    <div class="buttons">
-                                        <input type="submit" id="submit" class="btn btn-info" name="submit"
-                                               value="Send">
-                                        <a href="users.html" class="btn btn-info perehod" role="button"
-                                           aria-pressed="true">Obtain data</a>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 </body>
 </html>
