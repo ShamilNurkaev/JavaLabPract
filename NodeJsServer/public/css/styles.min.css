@@ -1,20 +1,25 @@
 body {
     background-color: #f4f4f4;
 }
+
 h1 {
-    font: 100 24px/36px "Titillium Web",serif;
+    font: 100 24px/36px "Titillium Web", serif;
     margin: 0 0 15px;
 }
+
 h2 {
-    font: 200 40px "Titillium Web",serif;
+    font: 200 40px "Titillium Web", serif;
 }
+
 h3 {
-    font: 1000 16px "Titillium Web",serif;
+    font: 1000 16px "Titillium Web", serif;
     letter-spacing: 1.5px;
 }
+
 h4 {
-    font: 1000 12px "Titillium Web",serif;
+    font: 1000 12px "Titillium Web", serif;
 }
+
 .resume-box div:first-child {
     background: #fff;
     color: #9c27b0;
@@ -25,18 +30,22 @@ h4 {
     text-align: center;
     width: 100px;
 }
+
 .resume-box div:last-child {
     padding-left: 120px;
 }
+
 .resume-box span {
     color: #a0a0a0;
     display: block;
     font-weight: 5000;
     padding-bottom: 5px;
 }
+
 .contact-form, .contact-info, .contactWrapper {
     padding: 0;
 }
+
 .input-style input, .text-style textarea {
     background: transparent none repeat scroll 0 0;
     color: #3c3c3c;
@@ -44,20 +53,35 @@ h4 {
     padding: 11px 0;
     width: 100%;
 }
+
 .input-style div {
     margin-bottom: 20px;
 }
+
 #submit {
     margin: 15px 0 3px;
 }
+
 textarea {
     height: 120px;
 }
+
 :-moz-placeholder {
     color: #3c3c3c;
     letter-spacing: 0.5px;
 }
+
 *::-moz-placeholder {
     color: #3c3c3c;
     letter-spacing: 0.5px;
+}
+
+.buttons {
+    display: inline-block;
+    width: 300px;
+    height: 100px;
+}
+
+.perehod {
+    margin: 15px 10px 3px;
 }

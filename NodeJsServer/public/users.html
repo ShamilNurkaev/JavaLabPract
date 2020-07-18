@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
+            integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
+            crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<script>
+    function getUsers() {
+        $.getJSON("/users", function (response) {
+            let html = "<table>";
+            for (let i = 0; i < response.length; i++) {
+                html += "<tr>";
+                html += "<td>" +
+                    "name: " + response[i]["name"] + "<br>" +
+                    "age: " + response[i]["age"] + "<br>" +
+                    "education: " + response[i]["education"] + "<br>" +
+                    "academic degree: " + response[i]["academic degree"] + "<br>" +
+                    "course: " + response[i]["course"] + "<br>" +
+                    "work experience: " + response[i]["work experience"] + "<br>" +
+                    "phone: " + response[i]["phone"] + "<br>" +
+                    "email: " + response[i]["email"] + "<br>" +
+                    "message: " + response[i]["message"] + "<br>" +
+                    "</td>";
+                html += "</tr>";
+            }
+            html += "</table>";
+            $("#users_table").append(html);
+        });
+    }
+</script>
+<body>
+<button onclick="getUsers()">Получить данные</button>
+<div style="background: #f5f5f5; "id="users_table">
+</div>
+</body>
+</html>
