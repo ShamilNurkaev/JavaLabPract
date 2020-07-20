@@ -76,12 +76,12 @@ textarea {
     letter-spacing: 0.5px;
 }
 
-.buttons {
+.buttons_1 {
     display: inline-block;
     width: 300px;
     height: 100px;
 }
 
-.perehod {
+.showThisSummary, .sendToServer {
     margin: 15px 10px 3px;
 }

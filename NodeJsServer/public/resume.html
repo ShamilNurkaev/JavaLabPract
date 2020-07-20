@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,7 +16,6 @@
           rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800,700italic'
           rel='stylesheet' type='text/css'>
-
 </head>
 <body>
 <div class="container">
@@ -86,26 +85,30 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 contact-form">
                             <div>
-                                <form method="post" id="contactfor">
+                                <form id="contactfor" method="post" action="/someURL">
                                     <div class="input-style">
                                         <div>
-                                            <input class="form-control" type="text" id="name" name="name"
-                                                   placeholder="Name">
+                                            <label for="name"></label><input class="form-control" type="text" id="name"
+                                                                             name="name"
+                                                                             placeholder="Name">
                                         </div>
                                         <div>
-                                            <input class="form-control" type="email" id="email" name="email"
-                                                   placeholder="E-Mail">
+                                            <label for="email"></label><input class="form-control" type="email"
+                                                                              id="email" name="email"
+                                                                              placeholder="E-Mail">
                                         </div>
                                     </div>
                                     <div class="text-style">
-                                        <textarea class="form-control" name="message" id="message"
-                                                  placeholder="Message"></textarea>
+                                        <label for="message"></label><textarea class="form-control" name="message"
+                                                                               id="message"
+                                                                               placeholder="Message"></textarea>
                                     </div>
-                                    <div class="buttons">
-                                        <input type="submit" id="submit" class="btn btn-info" name="submit"
-                                               value="Send">
-                                        <a href="profile.html" class="btn btn-info perehod" role="button"
-                                           aria-pressed="true">Obtain data</a>
+                                    <div class="buttons_1">
+                                        <button type="submit" class="btn btn-info sendToServer">Send</button>
+                                        <a aria-pressed="true" class="btn btn-info showThisSummary" href="profile.html"
+                                        role="button">Obtain data</a>
+                                        <a aria-pressed="true" class="btn btn-primary sendToServer" href="userRequests.html"
+                                           role="button">SHOW ALL USER REQUESTS</a>
                                     </div>
                                 </form>
                             </div>

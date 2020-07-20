@@ -8,24 +8,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
             integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
             crossorigin="anonymous"></script>
-    <title>Profile</title>
+    <title>User requests</title>
     <script>
         function getUsers() {
-            $.getJSON("/profile", function (response) {
+            $.getJSON("/userRequests", function (response) {
                 let html = "<table>";
                 for (let i = 0; i < response.length; i++) {
-                    html += "<tr>";
                     html += "<strong>" +
+                        "id: </strong>" + response[i]["id"] + "<br><strong>" +
                         "name: </strong>" + response[i]["name"] + "<br><strong>" +
-                        "age: </strong>" + response[i]["age"] + "<br><strong>" +
-                        "education: </strong>" + response[i]["education"] + "<br><strong>" +
-                        "academic degree: </strong>" + response[i]["academic degree"] + "<br><strong>" +
-                        "course: </strong>" + response[i]["course"] + "<br><strong>" +
-                        "work experience: </strong>" + response[i]["work experience"] + "<br><strong>" +
-                        "phone: </strong>" + response[i]["phone"] + "<br><strong>" +
                         "email: </strong>" + response[i]["email"] + "<br><strong>" +
-                        "message: </strong>" + response[i]["message"] + "<br><strong>" +
-                        "</td>";
+                        "message: </strong>" + response[i]["message"] + "<br>" +
+                        "</td><br>";
+                    html += "<tr>";
                     html += "</tr>";
                 }
                 html += "</table>";
